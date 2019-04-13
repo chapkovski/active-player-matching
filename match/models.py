@@ -15,7 +15,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
     seconds_to_passive = 5
-
+    group_size = 3
 
 class Subsession(BaseSubsession):
     pass

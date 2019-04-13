@@ -3,39 +3,11 @@
 {% block title %}{{ title_text }}{% endblock %}
 {% block content %}
     {{ body_text }}
-    <div id="getting-started"></div>
-    <script type="text/javascript">
-        var idleTime = 0,
-            active = true;
-
-        function send_status(status) {
-            if (status !== active) {
-                console.log(status);
-                active = status;
-            }
-        };
-
-        $(document).ready(function () {
-            //Increment the idle time counter every second.
-            var idleInterval = setInterval(timerIncrement, 1000); // 1 second
-
-            //Zero the idle timer on mouse movement.
-            $(this).mousemove(function (e) {
-                idleTime = 0;
-                send_status(true);
-            });
-            $(this).keypress(function (e) {
-                idleTime = 0;
-                send_status(true);
-            });
-        });
-
-        function timerIncrement() {
-            idleTime = idleTime + 1;
-            if (idleTime > {{ Constants.seconds_to_passive }}) {
-                send_status(false);
-            }
-        }
-    </script>
-
+    <div class="alert alert-warning">
+        <h5>Your current status: <span class="status">active</span></h5>
+    </div>
+    <div class="alert alert-primary">
+        <h5>Seconds to change of status: <span class="timer"></span></h5>
+    </div>
+    {% include 'match/includes/wp_channel.html' %}
 {% endblock %}
