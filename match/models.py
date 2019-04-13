@@ -3,11 +3,10 @@ from otree.api import (
     Currency as c, currency_range
 )
 
-
-author = 'Your name here'
+author = 'Philipp Chapkovski, HSE-Moscow, chapkovski@gmail.com'
 
 doc = """
-Your app description
+An app that matches only active players.
 """
 
 
@@ -15,6 +14,7 @@ class Constants(BaseConstants):
     name_in_url = 'match'
     players_per_group = None
     num_rounds = 1
+    seconds_to_passive = 5
 
 
 class Subsession(BaseSubsession):
@@ -26,4 +26,4 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+    active = models.BooleanField(initial=True)

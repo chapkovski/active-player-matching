@@ -6,7 +6,6 @@
     <div id="getting-started"></div>
     <script type="text/javascript">
         var idleTime = 0,
-            message_sent = false,
             active = true;
 
         function send_status(status) {
@@ -17,8 +16,8 @@
         };
 
         $(document).ready(function () {
-            //Increment the idle time counter every minute.
-            var idleInterval = setInterval(timerIncrement, 1000); // 1 minute
+            //Increment the idle time counter every second.
+            var idleInterval = setInterval(timerIncrement, 1000); // 1 second
 
             //Zero the idle timer on mouse movement.
             $(this).mousemove(function (e) {
@@ -33,19 +32,10 @@
 
         function timerIncrement() {
             idleTime = idleTime + 1;
-            if (idleTime > 5) {
+            if (idleTime > {{ Constants.seconds_to_passive }}) {
                 send_status(false);
             }
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.js"></script>
-    <script type="text/javascript">
-        $('#getting-started').countdown('2020/01/01',).on('update.countdown', function (event) {
-            // %-N is "Total count of minutes till the end, non-padded"
-            // %S is seconds left
-            var format = '%-N:%S';
-            $(this).html(event.strftime(format));
-            {#console.log(event.strftime(format));#}
-        });
-    </script>
+
 {% endblock %}

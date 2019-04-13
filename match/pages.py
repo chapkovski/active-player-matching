@@ -7,23 +7,18 @@ class FirstWP(WaitPage):
     template_name = 'match/MatchWP.html'
 
 
-class MyPage(Page):
-    pass
 
 
-class ResultsWaitPage(WaitPage):
+class ActivePage(Page):
+    def is_displayed(self) -> bool:
+        return self.player.active
 
-    def after_all_players_arrive(self):
-        pass
-
-
-class Results(Page):
-    pass
-
+class PassivePage(Page):
+    def is_displayed(self) -> bool:
+        return not self.player.active
 
 page_sequence = [
     FirstWP,
-    # MyPage,
-    # ResultsWaitPage,
-    # Results
+    ActivePage,
+    PassivePage,
 ]

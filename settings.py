@@ -13,13 +13,12 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-       'name': 'match',
-       'display_name': "match",
-       'num_demo_participants': 3,
-       'app_sequence': ['match'],
+        'name': 'match',
+        'display_name': "match",
+        'num_demo_participants': 3,
+        'app_sequence': ['match'],
     },
 ]
-
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
@@ -41,3 +40,4 @@ SECRET_KEY = 'l=$wt*)apw3ngf74f+qbfdwvzjav=gs9asdgbnv1$$$)5uwh(0'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+EXTENSION_APPS = ['match']
