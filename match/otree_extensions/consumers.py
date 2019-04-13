@@ -24,6 +24,6 @@ class WPTracker(JsonWebsocketConsumer):
     def receive(self, content, **kwargs):
         """When the new message is receved, we register it (updating current task). and feed him/her back a new task."""
         player = self.get_player()
-        logger.info(f'message from client {player.participant.code} received: {content}')
+        logger.info(f'status message from client {player.participant.code} received: {content}')
         player.active = content['status']
         player.save()
